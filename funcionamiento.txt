@@ -1,0 +1,33 @@
+(Nombre Pnediente por crearse) = Página de comics
+
+En esta página se puede considerar una página de cómics, donde diferentes autores pueden subir sus propios propios webcomics, ya sea por contrato (Llamado sección originales) y de manela libre (Llamado globales).
+En esta página se divide en las siguientes secciones:
+    - Inicio: Esta sección tendrá un banner publicitando los mejores y nuevos comics en serializacíon, cambiando diariamente por diferentes comics. También se verán una sección para que se pueda ver los Originales y los globales más recientes. Va a haber una sección que muestre cuando tus comics se actualicen a tiempo real.
+    - Originales: Se mostrarán las categorias de los diferentes comics y un calendario mostrando su fecha de actualiazción.
+    - Globales: Se mostrarán los más populares y por categorias, también una ventana de publicidad con un banner solo para globales.
+    - Perfil de usuario: Se va a poder cambiar la foto de perfil del usuario, modificar nombre e idioma de la app (español e ingles)
+    - Perfil de craeador: Es un perfil especial para creadores de comics, donde van a poder publicar su propio arte según los lineamientos de la app para promocionarse, además de esto también van a poder publicar información sobre sus comisiones en una ventana aparte, y se le atribuirá a su perfil los comics que haya publicado.
+
+Datos extras que va a tener la página:
+    - Metodo de suscripciones: Es un pase mensual donde va a poder ver los capítulos tiempo antes que salgan publicamente, y algunos comics especiales que solo vas a poder leer si tienes esa suscripcióna la página.
+    - Metodo de seguidores: Evento donde los usuarios pueden acceder a contenido exclusivo de los autores de los comics.
+    - Al final de los capitulos un sistema de comentarios donde los usuarios puedan comentar y reaccionar a los capítulos.
+ 
+
+Titulo:
+
+Objetivo General: Una página de comics, donde los ususarios puedan tener cierta interactividad con los artistas 
+
+Objetivos específicos:
+    -
+    -
+    -
+    -
+    -
+
+Descripción del problema: 
+
+Justificación:
+
+Resultados Esperados:
+
