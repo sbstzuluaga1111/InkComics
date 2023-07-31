@@ -1,0 +1,24 @@
+:root{
+    --azul-muy-oscruro:#121528 ;
+    --azul-oscruro:#1B3864 ;
+    --azul-claro:#6F87C3 ;
+    --azul-muy-claro:#D4DBF7 ;
+    --durazno:#D99886 ;
+    --dorado-amarilloso: ;
+}
+
+.colores-navar{
+    background-color: var(--azul-oscruro) !important;
+}
+
+.carrouse-section{
+    width: 100%;
+    height: 680px;
+    
+}
+
+.carrouse-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
