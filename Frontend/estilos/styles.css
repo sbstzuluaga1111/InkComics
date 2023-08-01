@@ -36,3 +36,23 @@
     width: 90%;
     height: 60%;
 }
+
+.contenedor-scroll{
+    max-height: 250px;
+    border: 1px solid blue;
+    display: flex;
+    overflow-x: auto;
+}
+
+.contenedor-scroll::-webkit-scrollbar{
+    
+}
+
+.contenedor-scroll .card-scroll{
+    min-width: 250px;
+    height: 250px;
+    line-height: 110px;
+    text-align: center;
+    background-color: #121528;
+    margin: 5px;
+}
