@@ -7,52 +7,59 @@
     --dorado-amarilloso: ;
 }
 
-.colores-navar{
-    background-color: var(--azul-oscruro) !important;
-    height: 70px !important;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.carrouse-section{
-    width: 100%;
-}
-
-.carrouse-section img {
-    width: 100%;
-
-    object-fit: cover;
-}
-
-.separacion-nav{
-    margin-top: 70px !important;
-}
-
-.foto-back-banner{
-    background-image: url('../img/bacgroundBlur.jpg');
-    backdrop-filter: blur(10px);
-    height: 60%;
-}
-
-.ubicacion-carrusel{
-    width: 90%;
-    height: 60%;
-}
-
-.contenedor-scroll{
-    max-height: 250px;
-    border: 1px solid blue;
+body{
     display: flex;
-    overflow-x: auto;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--azul-claro);
 }
 
-.contenedor-scroll::-webkit-scrollbar{
+.wrapper{
+    max-width: 1200px;
+}
+
+.wrapper svg{
+    height: 46px;
+    width: 46px;
+    cursor: pointer;
+    position: absolute;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 46px;
+    background:var(--azul-muy-claro);
+    border-radius: 50%;
+}
+
+.wrapper svg:first-child{
+    left: -23px;
     
 }
 
-.contenedor-scroll .card-scroll{
-    min-width: 250px;
-    height: 250px;
-    line-height: 110px;
-    text-align: center;
-    background-color: #121528;
-    margin: 5px;
+.wrapper svg:first-child{
+    right: -23px;
+}
+
+.wrapper .carrousell{
+    font-size: 0px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.carrousell img{
+    height: 300px;
+    object-fit: cover;
+    margin-left: 14px;
+    width: calc(100%/3);
+}
+.carrousell img:first-child{
+    margin-left: 0px;
 }
