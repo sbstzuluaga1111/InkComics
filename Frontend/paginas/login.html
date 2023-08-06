@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de usuario</title>
+</head>
+<body>
+    <div class="container">
+        <a class="prev">&#10094;</a>
+        <a class="next" >&#10095;</a>
+        <div class="mySlides">
+            <div class="card">
+                <div class="header">
+                    <div class="image">
+                        <img src="https://f.rpp-noticias.io/2020/10/15/10103476jpg.jpg">
+                    </div>
+                    <div class="date">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="info">
+                    <a rel="noopener noreferrer" href="#" class="block">
+                    <span class="title">The Amazing Spiderman</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mySlides">
+            <div class="card">
+                <div class="header">
+                    <div class="image">
+                        <img src="https://hablandodecomics.files.wordpress.com/2012/01/portada-95-x-men.jpg">
+                    </div>
+                    <div class="date">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="info">
+                    <a rel="noopener noreferrer" href="#" class="block">
+                    <span class="title">Ce-Men</span>
+                    </a>
+                </div>
+            </div>
+        </div>     
+        <div class="mySlides">
+            <div class="card">
+                <div class="header">
+                    <div class="image">
+                        <img src="https://www.explosioncomics.com/wp-content/uploads/2022/07/portada-retro-comic-The-Joker-put-on-a-happy-face.jpg">
+                    </div>
+                    <div class="date">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="info">
+                    <a rel="noopener noreferrer" href="#" class="block">
+                    <span class="title">El Gueson</span>
+                    </a>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+        <div class="elements">
+            <span class="quadrate" onclick="currentSlide(1)"></span>
+            <span class="quadrate" onclick="currentSlide(2)"></span>
+            <span class="quadrate" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+</body>
+
+<style>
+    .container{
+        width: 50%;
+        position: relative;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .mySlides{
+        display: none;
+    }
+    .prev,
+    .next{
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6 ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        border: solid #959595 2px;
+    }
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    .prev:hover,
+    .next:hover{
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .elements{
+        text-align: center;
+    }
+    .quadrate{
+        cursor: pointer;
+        height: 4px;
+        width: 50px;
+        margin: 0 2px;
+        background-color: #717171;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+        border-radius: 2px;
+    }
+    .active, .quadrate:hover{
+        background-color: #fff;
+    }
+    @media screen and (max-width:900px) {
+        .container{
+            width: 100%;
+        }
+    }
+    @media screen and (max-width:500px) {
+        .container{
+            width: 100%;
+        }
+        .prev,
+        .next{
+            padding: 5px;
+        }
+    }
+    .card {
+        padding: 10px;
+        max-width: 260px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0,
+        0, 0.06);
+        background-color: rgb(255, 255, 255);
+        font-family: sans-serif;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .content {
+        margin-top: 1rem;
+    }
+    .content .header {
+        margin-top: 0.5rem;
+    }
+    .image {
+        width: 90%;
+        height: 300px;
+        border-radius: 4px;
+        background-color: rgb(205, 235, 255);
+        padding: 9px;
+    }
+    .image img{
+        width: 100%;
+        height: 300px;
+    }
+    .tag {
+        text-transform: capitalize;
+        background-color: rgba(255, 101, 101, 0.425);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: #0F4C81;
+    }
+    .date {
+        display: flex;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        align-items: center;
+        margin: 2px;
+    }
+    .title {
+        display: block;
+        font-size: 1.25rem;
+        line-height: 1.35rem;
+        font-weight: 600;
+        padding-bottom: 5px;
+        padding-top: 14px;
+        color: #0F4C81;
+        text-align: center;
+    }
+    .description {
+        line-height: 1.375;
+    }
+
+</style>
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex)
+    function plusSlides(n){
+    showSlides(slideIndex += n)
+    }
+    function currentSlide(n){
+    showSlides(slideIndex = n)
+    }
+    let prev = document.querySelector(".prev")
+    prev.addEventListener("click", (e)=>{
+    plusSlides(-1)
+    })
+    let next = document.querySelector(".next")
+    next.addEventListener("click", (e)=>{
+    plusSlides(1)
+    })
+    function showSlides(n){
+    let i;
+    let slides = document.querySelectorAll(".mySlides");
+    let quadrates = document.querySelectorAll(".quadrate");
+    if(n > slides.length) slideIndex = 1
+    if(n < 1) slideIndex = slides.length
+    for(i = 0; i < slides.length; i++){
+    slides[i].style.display = "none"
+    }
+    for(i = 0; i < quadrates.length;i++){
+    quadrates[i].className =
+    quadrates[i].className.replace("active","")
+    }
+    slides[slideIndex-1].style.display = "block";
+    quadrates[slideIndex-1].className += " active";
+    }
+</script>
+<html>
