@@ -15,7 +15,7 @@
 
 body{
     display: flex;
-    padding: 0 10px;
+    padding: 0 35px;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
@@ -24,9 +24,11 @@ body{
 
 .wrapper{
     max-width: 1200px;
+    position: relative;
 }
 
 .wrapper svg{
+    top: 50%;
     height: 46px;
     width: 46px;
     cursor: pointer;
@@ -36,15 +38,17 @@ body{
     line-height: 46px;
     background:var(--azul-muy-claro);
     border-radius: 50%;
+    transform: translateY(-50%);
 }
 
 .wrapper svg:first-child{
     left: -23px;
-    
+    display: none;
 }
 
-.wrapper svg:first-child{
+.wrapper svg:last-child{
     right: -23px;
+
 }
 
 .wrapper .carrousell{
@@ -52,7 +56,19 @@ body{
     cursor: pointer;
     overflow: hidden;
     white-space: nowrap;
+    scroll-behavior: smooth;
 }
+
+.carrousell.dragging{
+    cursor: grab;
+    scroll-behavior: auto;
+}
+
+.carrousell.dragging img{
+    pointer-events: none;
+
+}
+
 
 .carrousell img{
     height: 300px;
@@ -62,4 +78,16 @@ body{
 }
 .carrousell img:first-child{
     margin-left: 0px;
+}
+
+@media screen and (max-width:900px) {
+    .carrousell img{
+        width: calc(100%/2);
+    }
+}
+
+@media screen and (max-width:550px) {
+    .carrousell img{
+        width: calc(100%/1);
+    }
 }
