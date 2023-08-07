@@ -17,17 +17,17 @@ body{
     background-color: var(--azul-claro);
 }
 
-.logo{
-    width: 70px;
-    height: 70px;
-}
-
 .warperCont{
     display: flex;
     padding: 0 35px;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+}
+
+.logo{
+    width: 70px;
+    height: 70px;
 }
 
 .wrapper{

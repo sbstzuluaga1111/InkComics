@@ -1,12 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
 
+:root{
+    --azul-muy-oscruro:#121528 ;
+    --azul-oscruro:#1B3864 ;
+    --azul-claro:#6F87C3 ;
+    --azul-muy-claro:#D4DBF7 ;
+    --durazno:#D99886 ;
+    --dorado-amarilloso: ;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 .btn-primary{
-    background-color: #cb0c59 !important;
+    background-color: var(--azul-oscruro) !important;
     border-style: none;
 }
 
@@ -18,7 +27,7 @@ body, input{
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background-color: #eb649f;
+    background-color: var(--azul-claro);
     overflow: hidden;
 }
 
@@ -28,7 +37,7 @@ body, input{
     width: 2000px;
     height: 2000px;
     border-radius: 50%;
-    background: linear-gradient(-45deg, #22a0b6, #6b96b6);
+    background: linear-gradient(-45deg, var(--azul-oscruro),var(--azul-claro));
     top: -10%;
     right: 48%;
     transform: translateY(-50%);
@@ -79,7 +88,7 @@ form.sign-up-form{
 
 .title{
     font-size: 2.2rem;
-    color: #d40050;
+    color: var(--azul-oscruro);
     margin-bottom: 10px;
 }
 
@@ -99,7 +108,7 @@ form.sign-up-form{
 .input-field i{
     text-align: center;
     line-height: 55px;
-    color: #d40050;
+    color: var(--azul-oscruro);
     font-size: 1.1rem;
 }
 
@@ -328,7 +337,7 @@ form.sign-up-form{
     }
     
     .image{
-        width: 150px;
+        width: 200px;
         transition: .9s .6s ease-in-out;
     }
 
