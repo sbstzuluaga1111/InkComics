@@ -9,13 +9,18 @@ class Server {
         this.app.use(express.json())
         this.port = process.env.PORT
         
-        this.authPath = "/api/auth"
-        this.usuariosPath = '/api/usuarios'
+        this.paths = {
+            auth: '/auth',
+            search: '/search',
+            users: '/users',
+            comics: '/comics',
+            libros:   '/libros',
+            capComics:    '/capComics',
+            capLibros:    '/capLibros',
+        }
 
         this.conectDB()
-        //Middlewares
         this.middlewares()
-        //Routes
         this.routes()
     }
 
@@ -25,8 +30,13 @@ class Server {
     }
 
     routes(){
-        this.app.use(this.authPath, require('../routes/auth.routes.js')) 
-        this.app.use(this.usuariosPath, require('../routes/usuario.routes.js'))
+        this.app.use(this.paths.auth, require('../routes/auth.routes.js')) 
+        //this.app.use(this.paths.search, require('../routes/search.routes.js'))
+        //this.app.use(this.paths.users, require('../routes/users.routes.js'))
+        //this.app.use(this.paths.comics, require('../routes/comics.routes.js'))
+        //this.app.use(this.paths.libros, require('../routes/libros.routes.js'))
+        //this.app.use(this.paths.capComics, require('../routes/capComics.routes.js'))
+        //this.app.use(this.paths.capLibros, require('../routes/capLibro.routes.js'))
     }
 
     listen(){

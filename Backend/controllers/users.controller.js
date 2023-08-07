@@ -1,31 +1,41 @@
-const Usuario = require('../models/usuario.js')
+const Usuario = require('../models/users.js')
 const bcryptjs = require('bcryptjs')
 
 
-const getU = (req,res) =>{
-    res.json({"message":"GET API"})
+const getUsers = async(req, res)=>{
+    const { init, fin} = req.query;
+    const query = { estado: true };
+
+    const [ total, usuarios ] = await Promise.all([
+        Usuario.countDocuments(query),
+        Usuario.find(query)
+            .skip(Number(init))
+            .limit(Number(fin))
+    ]);
+
+    res.json({
+        total,
+        usuarios
+    });
 }
 
-const postU = async (req,res) =>{
+const postUsers = async (req,res) =>{
 
-    const {Nombre,Email,Password,Rol} = req.body
-    const usuario = new Usuario({Nombre,Email,Password,Rol})
+    const {username,email,password} = req.body
+    const usuario = new Usuario({username,email,password})
 
-    ///Verificar si el correo ya existe
-    const existeEmail = await Usuario.findOne({Email})
+    const existeEmail = await Usuario.findOne({email})
     if(existeEmail){
         return res.status(400).json({
-            msg:"Email is already registered"
+            msg:"Email ya esat registrado"
         })
     }
 
-    //Encriptar nuestra contraseña
     const salt = bcryptjs.genSaltSync()
-    usuario.Password = bcryptjs.hashSync(Password,salt)
-
+    usuario.password = bcryptjs.hashSync(password,salt)
 
     await usuario.save()
-    res.json({"message":"POST API", usuario})
+    res.json({msg:"Usuario Agregado con exito", usuario})
 }
 
 const deleteU = (req,res) =>{
@@ -45,7 +55,6 @@ const putU = (req,res) =>{
 }
 
 module.exports = {
-    homepageU,
     getOneU,
     getU,
     postU,

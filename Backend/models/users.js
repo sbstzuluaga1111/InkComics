@@ -28,6 +28,7 @@ const usuariosShema = Schema({
     },
     status:{
         type:Boolean,
+        requierd:true,
         default:true,
     },
     monedas:{
