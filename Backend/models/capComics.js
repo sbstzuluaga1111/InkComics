@@ -28,11 +28,8 @@ const capComicsShema = Schema({
         type:Boolean,
         default:true
     },
-    seLibros:{
-        type:Array,
-    },
-    seCretator:{
-        type:Array,
+    imgCap:{
+      type:Image
     }
 })
 
