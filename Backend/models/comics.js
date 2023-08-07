@@ -31,9 +31,11 @@ const comicsShema = Schema({
         ref: 'estados',
         required: true,
     },
-    capitulos:{
-        type:Array,
-    },
+    estatus:{
+        type:Boolean,
+        default: true,
+        required: true
+    }
 })
 
 module.exports = model("comics", comicsShema)

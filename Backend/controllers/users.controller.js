@@ -38,27 +38,74 @@ const postUsers = async (req,res) =>{
     res.json({msg:"Usuario Agregado con exito", usuario})
 }
 
-const deleteU = (req,res) =>{
-    res.json({"message":"DELETE API"})
+const deleteUsers = async (req, res)=>{
+
+    const {id} = req.params
+
+    const usuario = await Usuario.findByIdAndUpdate( id, { status: false } );
+
+    res.json(usuario)
 }
 
-const patchU =  (req,res) =>{
-    res.json({"message":"PATCH API"})
+const putUsers = async (req, res)=>{
+
+      const { id } = req.params;
+      
+      const { _id, password, fdp,description,email,...resto } = req.body;
+  
+      if ( password ) {
+ 
+          const salt = bcryptjs.genSaltSync();
+          resto.password = bcryptjs.hashSync( password, salt );
+      }
+      
+      if ( fdp ) {
+        resto.fdp = fdp;;
+    }
+
+    if ( description ) {
+        resto.description = description;
+    }
+      
+      const usuario = await Usuario.findByIdAndUpdate( id,resto , {new:true} );
+  
+      res.json({
+          msg:"Usuario Actualizado",
+          usuario : usuario
+      });
+      
+  }
+
+const getOneUser = (req,res) =>{
+
+    try {
+        const { id } = req.params;
+
+        const userFind = Usuario.findOne({id})
+    
+        if(!userFind){
+            return res.json({
+                msg: "Usuario no encontrado"
+            })
+        }
+
+        res.json({
+           usuario: userFind
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.json({
+            error
+        })
+    }
 }
 
-const getOneU = (req,res) =>{
-    res.json({"message":"GET ONE API"})
-}
-
-const putU = (req,res) =>{
-    res.json({"message":"PUT API"})
-}
 
 module.exports = {
-    getOneU,
-    getU,
-    postU,
-    deleteU,
-    patchU,
-    putU
+    getUsers,
+    postUsers,
+    deleteUsers,
+    putUsers,
+    getOneUser
 }

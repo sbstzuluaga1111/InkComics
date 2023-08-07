@@ -1,7 +1,8 @@
 const {Router} = require('express');
 const {check} = require('express-validator');
 const { validateDocuments } = require('../middlewares/validate.document.js');
-
+const { getUsers, postUsers, deleteUsers, putUsers, getOneUser } = require('../controllers/users.controller.js');
+const { emailExiste, isValidRol, userExistsById } = require('../helpers/db.validator.js');
 
 const router = Router();
 
@@ -12,7 +13,7 @@ router.post("/",[
         check('password', 'Password debe ser de minimo 6 letras').isLength({min :6}),
         check('email', 'El email no es valido').isEmail(),
         check('email').custom(emailExiste ),
-        check('rol').custom(isValidRole),
+        check('rol').custom(isValidRol),
         validateDocuments
 ] ,postUsers);
 
@@ -26,9 +27,14 @@ router.put("/:id",
 [
         check('id', 'No es un ObjectID MongoDB válido').isMongoId(),
         check('id').custom( userExistsById ),
-        check('rol').custom(isValidRole),
+        check('rol').custom(isValidRol),
         validateDocuments
     ], putUsers );
 
+router.get("/:id", [
+        check('id', 'No es un ObjectID MongoDB válido').isMongoId(),
+        check('id').custom( userExistsById ),
+        validateDocuments
+],getOneUser);
 
 module.exports = router;

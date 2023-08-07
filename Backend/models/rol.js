@@ -1,6 +1,6 @@
 const {Schema,model} = require('mongoose')
 
-const RoleShema = Schema({
+const RolesShema = Schema({
     rol:{
         type:String,
         required:[true, 'El rol es obligatorio']
@@ -29,7 +29,7 @@ const subscripcionesShema = Schema({
     }
 })
 
-const modelRol = model('roles',RoleShema),
+const modelRol = model('roles',RolesShema),
 modelEstados = model('estados',EstadosShema),
 modelSubscription = model('subscripciones',subscripcionesShema)
 

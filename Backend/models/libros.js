@@ -31,8 +31,10 @@ const librosShema = Schema({
         ref: 'estados',
         required: true,
     },
-    capitulos:{
-        type:Array,
+    estatus:{
+        type:Boolean,
+        default: true,
+        required: true
     },
 })
 

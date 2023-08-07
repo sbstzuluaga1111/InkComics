@@ -33,6 +33,7 @@ const usuariosShema = Schema({
     },
     monedas:{
         type:Number,
+        default:0,
     },
     subs:{
         type: Schema.Types.ObjectId,
