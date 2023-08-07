@@ -30,8 +30,8 @@ const subscripcionesShema = Schema({
 })
 
 const modelRol = model('roles',RoleShema),
-modelEstados = model('roles',EstadosShema),
-modelSubscription = model('roles',subscripcionesShema)
+modelEstados = model('estados',EstadosShema),
+modelSubscription = model('subscripciones',subscripcionesShema)
 
 module.exports = {
     modelRol,

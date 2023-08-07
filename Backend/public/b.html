@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subir Imágenes</title>
+</head>
+<body>
+  <h1>Subir Imágenes</h1>
+  <input type="file" id="imageInput" accept=".jpeg, .jpg, .png, .gif" multiple />
+  <button onclick="uploadImages()">Subir Imágenes</button>
+
+  <script>
+    function uploadImages() {
+      const input = document.getElementById('imageInput');
+      const formData = new FormData();
+
+      for (let i = 0; i < input.files.length; i++) {
+        formData.append('images', input.files[i]);
+      }
+
+      fetch('/formulario', {
+        method: 'POST',
+        body: formData,
+      })
+      .then((response) => response.text())
+      .then((message) => {
+        alert(message);
+      })
+      .catch((error) => {
+        console.error('Error al subir imágenes:', error);
+      });
+    }
+  </script>
+</body>
+</html>

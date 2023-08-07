@@ -15,32 +15,41 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname)); // Renombra la imagen con una marca de tiempo para evitar conflictos
   },
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage, fileFilter: imageFilter });
+
+// Función para filtrar solo las imágenes permitidas
+function imageFilter(req, file, cb) {
+  const allowedExtensions = ['.jpeg', '.jpg', '.png', '.gif'];
+  const fileExtension = path.extname(file.originalname).toLowerCase();
+  if (allowedExtensions.includes(fileExtension)) {
+    cb(null, true);
+  } else {
+    cb(new Error('Tipo de archivo no válido. Solo se permiten imágenes .jpeg, .jpg, .png y .gif'));
+  }
+}
 
 // Parsea el contenido del formulario enviado
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public')); // Ruta pública para servir las imágenes
 
-// Ruta para manejar la solicitud POST del formulario para subir la imagen
-app.post('/formulario', upload.single('imagen'), async (req, res) => {
+// Ruta para manejar la solicitud POST del formulario para subir las imágenes
+app.post('/formulario', upload.array('images'), async (req, res) => {
   try {
-    // Extrae los datos enviados desde el formulario
-    const { field1, field2 } = req.body;
+    // Obtén las rutas de las imágenes guardadas en el servidor
+    const imagePaths = req.files.map((file) => '/images/' + file.filename);
 
-    // Crea un nuevo objeto del esquema A con la URL de la imagen
+    // Crea un nuevo objeto del esquema A con las rutas de las imágenes
     const mainObject = new MainModel({
-      field1: field1,
-      field2: field2,
-      imageUrl: req.file ? '/images/' + req.file.filename : '', // Guarda la URL de la imagen
+      imageUrls: imagePaths,
     });
 
     // Guarda el objeto A en la base de datos
     const savedMainObject = await mainObject.save();
 
-    res.send('Imagen subida y objeto A guardado con éxito');
+    res.send('Imágenes subidas y objeto A guardado con éxito');
   } catch (error) {
-    console.error('Error al subir la imagen y guardar el objeto A:', error);
-    res.status(500).send('Error al subir la imagen y guardar el objeto A');
+    console.error('Error al subir imágenes y guardar el objeto A:', error);
+    res.status(500).send('Error al subir imágenes y guardar el objeto A');
   }
 });
 
@@ -49,3 +58,4 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`Servidor escuchando en el puerto ${port}`);
 });
+

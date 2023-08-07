@@ -1,6 +1,6 @@
 const {Schema, model, models} = require('mongoose')
 
-const capComicsShema = Schema({
+const capLibroShema = Schema({
     numCap:{
         type:Number,
         default: 0,
@@ -12,13 +12,12 @@ const capComicsShema = Schema({
     },
     perteneciente:{
         type: Schema.Types.ObjectId,
-        ref: 'comics',
+        ref: 'libros',
         required: true,
     },
     fechaPub:{
-        type:String,
-        required:[true,'Email is required'],
-        unique:true,
+        type:Date,
+        default: Date.now,
     },
     status:{
         type:Boolean,
@@ -27,35 +26,29 @@ const capComicsShema = Schema({
     unlocked:{
         type:Boolean,
         default:true
-    },
-    seLibros:{
-        type:Array,
-    },
-    seCretator:{
-        type:Array,
     }
 })
 
-autoIncrementSchema.pre('save', async function (next) {
-  const currentDocument = this
-  if (currentDocument.isNew) {
-    try {
-      const lastDocument = await currentDocument.constructor.findOne(
-        {},
-        { numCap: 1 },
-        { sort: { numCap: -1 } }
-      );
-
-      currentDocument.numCap = lastDocument ? lastDocument.numCap + 1 : 1
-
-        currentDocument.publishDate = Date.now()
-
-      return next();
-    } catch (error) {
-      return next(error)
+capLibroShema.pre('save', async function (next) {
+    const currentDocument = this
+    if (currentDocument.isNew) {
+      try {
+        const lastDocument = await currentDocument.constructor.findOne(
+          {},
+          { numCap: 1 },
+          { sort: { numCap: -1 } }
+        );
+  
+        currentDocument.numCap = lastDocument ? lastDocument.numCap + 1 : 1
+  
+          currentDocument.fechaPub = Date.now()
+  
+        return next();
+      } catch (error) {
+        return next(error)
+      }
     }
-  }
-  return next()
-})
+    return next()
+  })
 
-module.exports = model("Usuario", capComicsShema)
+module.exports = model("capLibros", capLibroShema)

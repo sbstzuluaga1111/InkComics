@@ -16,10 +16,9 @@ const capComicsShema = Schema({
         required: true,
     },
     fechaPub:{
-        type:String,
-        required:[true,'Email is required'],
-        unique:true,
-    },
+      type:Date,
+      default: Date.now,
+  },
     status:{
         type:Boolean,
         default:true,
@@ -29,11 +28,11 @@ const capComicsShema = Schema({
         default:true
     },
     imgCap:{
-      type:Image
+      type:Array,
     }
 })
 
-autoIncrementSchema.pre('save', async function (next) {
+capComicsShema.pre('save', async function (next) {
   const currentDocument = this
   if (currentDocument.isNew) {
     try {
@@ -45,7 +44,7 @@ autoIncrementSchema.pre('save', async function (next) {
 
       currentDocument.numCap = lastDocument ? lastDocument.numCap + 1 : 1
 
-        currentDocument.publishDate = Date.now()
+        currentDocument.fechaPub = Date.now()
 
       return next();
     } catch (error) {
@@ -55,4 +54,4 @@ autoIncrementSchema.pre('save', async function (next) {
   return next()
 })
 
-module.exports = model("Usuario", capComicsShema)
+module.exports = model("capComics", capComicsShema)

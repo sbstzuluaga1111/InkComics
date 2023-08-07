@@ -14,6 +14,9 @@ const usuariosShema = Schema({
         type:String,
         required:[true,'Password is required'],
     },
+    description:{
+        type:String,
+    },
     fdp:{
         type:String,
     },
@@ -48,7 +51,10 @@ const usuariosShema = Schema({
     seguidores:{
         type:Number,
         default:0
+    },
+    portfolio:{
+        type:Array,
     }
 })
 
-module.exports = model("Usuario", usuariosShema)
+module.exports = model("users", usuariosShema)
