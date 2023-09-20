@@ -1,0 +1,101 @@
+:root{
+    --azul-muy-oscruro:#121528 ;
+    --azul-oscruro:#1B3864 ;
+    --azul-claro:#6F87C3 ;
+    --azul-muy-claro:#D4DBF7 ;
+    --durazno:#D99886 ;
+    --dorado-amarilloso: ;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--azul-claro);
+}
+
+.warperCont{
+    display: flex;
+    padding: 0 35px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.logo{
+    width: 70px;
+    height: 70px;
+}
+
+.wrapper{
+    max-width: 1200px;
+    position: relative;
+}
+
+.wrapper svg{
+    top: 50%;
+    height: 46px;
+    width: 46px;
+    cursor: pointer;
+    position: absolute;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 46px;
+    background:var(--azul-muy-claro);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.wrapper svg:first-child{
+    left: -23px;
+    display: none;
+}
+
+.wrapper svg:last-child{
+    right: -23px;
+
+}
+
+.wrapper .carrousell{
+    font-size: 0px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+.carrousell.dragging{
+    cursor: grab;
+    scroll-behavior: auto;
+}
+
+.carrousell.dragging img{
+    pointer-events: none;
+
+}
+
+
+.carrousell img{
+    height: 300px;
+    object-fit: cover;
+    margin-left: 14px;
+    width: calc(100%/3);
+}
+.carrousell img:first-child{
+    margin-left: 0px;
+}
+
+@media screen and (max-width:900px) {
+    .carrousell img{
+        width: calc(100%/2);
+    }
+}
+
+@media screen and (max-width:550px) {
+    .carrousell img{
+        width: calc(100%/1);
+    }
+}
