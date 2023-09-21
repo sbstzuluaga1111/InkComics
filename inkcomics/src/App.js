@@ -1,18 +1,12 @@
 import './Assets/Styles/index.css';
 import React, { useState } from 'react';
-import Component from './Components/Component';
+import Component from './Components/NavComponent';
 
 function App() {
   
   return (
     <div>
         <Component/>
-        <h1>hola mundo</h1>
-        <a href='./inicio.html'>inicio</a>
-        <br></br>
-        <a href='./login.html'>login</a>
-        <br></br>
-        <a href='./signup.html'>signup</a>
     </div>
    
   );
