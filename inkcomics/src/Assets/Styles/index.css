@@ -11,11 +11,16 @@ body{
 .Nav{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background-color: olive;
+    height: 50px;
+    width: 100%;
 }
 
 .centrado{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 ul{
@@ -25,4 +30,43 @@ ul{
 li{
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.separate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info{
+    width: 30%;
+    margin-right: 10%;
+    margin-left: 2%;
+ 
+}
+
+.container{
+    width: 100%;
+}
+
+.diseño{
+    margin-right: 2%;
+    margin-left: 5%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+
+.contexto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5%;
+}
+
+.content{
+    height: 1500px;
+    background-color: white;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Lomponent from "./BotonNavComponent";
+
 
 export default function Component() {
   return (
@@ -12,11 +12,15 @@ export default function Component() {
         <div>
           <ul className="centrado">
             <li>
-             <Lomponent/>
+              <button>Coleccion</button>
             </li>
-            {/* Usar el componente importado correctamente */}
-            <li>Ingreso</li>
-            <li>Registro</li>
+           
+            <li>
+              <button>Ingresar</button>
+            </li>
+            <li>
+              <button>Registrar</button>
+            </li>
           </ul>
         </div>
       </div>
